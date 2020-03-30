@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function validate(event) {
+            var x = document.getElementById('values');
+            var res = document.getElementById('result');
+            var tt = event.key;
+
+            var patt = /[a-z]/.test(tt);
+
+            if (patt) {
+                event.preventDefault();
+            }else if(event.keyCode == 13){
+
+            } else {
+               x.value = x.value + event.key;
+            }
+
+            if(event.keyCode == 13){
+                res.innerHTML = eval(x.value);
+                x.value = eval(x.value);
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>
+        Simple Calculator
+    </h1>
+    <div class="box">
+        <input type="text" readonly id="values" onkeyup="validate(event)">
+        <br>
+        <h2>Result: <span id="result"></span></h2>
+        <br>
+        <div style="text-align: center;">
+            <button type="button" class="btn" id="btnAdd">+</button>
+            <button type="button" class="btn" id="btnSub">-</button>
+            <button type="button" class="btn" id="btnMult">*</button>
+            <button type="button" class="btn" id="btnDiv">/</button>
+        </div>
+        <div style="text-align: center;">
+            <button type="button" class="btn" id="btnSquare">x²</button>
+            <button type="button" class="btn" id="btnMod">%</button>
+            <button type="button" class="btn" id="btnEqual">=</button>
+        </div>
+        <div style="text-align: center;">
+            <button type="button" class="btn" id="btnCE">CE</button>
+        </div>
+
+        <p id="demo"></p>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
